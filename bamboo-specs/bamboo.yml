@@ -1,0 +1,6 @@
+---
+version: 2
+plan:
+  project-key: FEAAS
+  key: COMP
+  name: FEaaS components
