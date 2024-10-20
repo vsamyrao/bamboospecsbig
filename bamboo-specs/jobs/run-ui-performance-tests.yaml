@@ -1,0 +1,11 @@
+#other: !include runners/docker-large-dind-large.yaml
+tasks:
+  - script: |
+      #!/bin/bash
+      #source ${bamboo.scripts.path}/ci-init.sh
+      #export E2E_TEST_GROUP="UI Performance tests"
+      #export E2E_TEST_FILES="./build/e2e/performance/perf.cy.js"
+      #source ${bamboo.scripts.path}/ci-docker-compose-run-tests.sh e2e-parallel
+      echo "inside script"
+final-tasks:
+  - !include final-tasks/parse-junit-reports.yaml

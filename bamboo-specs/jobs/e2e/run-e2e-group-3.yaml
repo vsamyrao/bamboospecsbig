@@ -1,0 +1,11 @@
+#other: !include runners/docker-large-dind-large.yaml
+tasks:
+  - script: |
+      #!/bin/bash
+      #source ${bamboo.scripts.path}/ci-init.sh
+      #export E2E_TEST_GROUP="Styles|Library|Elements-picker"
+      #export E2E_TEST_FILES="./build/e2e/styles.cy.js,./build/e2e/library.cy.js,./build/e2e/elements-picker.cy.js"
+      #source ${bamboo.scripts.path}/ci-docker-compose-run-tests.sh e2e-parallel
+      echo "inside script"
+final-tasks:
+  - !include final-tasks/parse-junit-reports.yaml

@@ -1,0 +1,4 @@
+test-parser:
+  type: junit
+  test-results:
+    - .artifacts/*.junit.xml

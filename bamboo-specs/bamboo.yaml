@@ -1,0 +1,4 @@
+---
+!include 'acceptance-tests.yaml'
+---
+!include 'build-publish-test.yaml'

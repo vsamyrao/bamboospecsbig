@@ -1,0 +1,7 @@
+pbc:
+  image: mregistry.azurecr.io/sc/tools/docker:0.3.1-cli
+  size: LARGE
+  extra-containers:
+    - name: dockerd
+      image: mregistry.azurecr.io/sc/tools/docker:0.4-dind
+      size: LARGE

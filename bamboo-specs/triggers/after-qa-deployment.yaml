@@ -1,0 +1,3 @@
+after-deployment:
+  deployment-project: FEAAS - Components
+  environment: QA

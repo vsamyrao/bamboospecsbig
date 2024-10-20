@@ -1,0 +1,3 @@
+pbc:
+  image: mregistry.azurecr.io/sc/tools/helm:0.3.6
+  size: XSMALL

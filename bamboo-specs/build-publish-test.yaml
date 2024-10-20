@@ -1,0 +1,63 @@
+version: 2
+plan:
+  project-key: FEAAS
+  key: COMP
+  name: FEaaS components
+
+variables: !include variables.yaml
+
+stages:
+  - initialize:
+      - calculate-version
+  - prepare:
+      jobs:
+        - check-and-deploy-tenants
+        - build-and-publish-monorepo
+  - build:
+      jobs:
+        - build-and-publish-backend
+        - build-and-publish-k6
+        - build-and-publish-frontend
+        - build-and-publish-e2e
+        - build-helm-backend
+        - build-helm-frontend
+  - test:
+      jobs:
+        - run-backend-tests
+        - run-e2e-group-1
+        - run-e2e-group-2
+        - run-e2e-group-3
+        - run-e2e-group-4
+        - run-backend-performance-tests
+        - run-ui-performance-tests
+  - publish:
+      jobs:
+        - publish-artifacts
+
+calculate-version: !include jobs/calculate-version.yaml
+check-and-deploy-tenants: !include jobs/check-and-deploy-tenants.yaml
+build-and-publish-monorepo: !include jobs/build-and-publish-monorepo.yaml
+build-and-publish-backend: !include jobs/build-and-publish-backend.yaml
+build-and-publish-e2e: !include jobs/build-and-publish-e2e.yaml
+build-and-publish-frontend: !include jobs/build-and-publish-frontend.yaml
+build-and-publish-k6: !include jobs/build-and-publish-k6.yaml
+build-helm-backend: !include jobs/build-helm-backend.yaml
+build-helm-frontend: !include jobs/build-helm-frontend.yaml
+run-backend-tests: !include jobs/run-backend-tests.yaml
+run-backend-performance-tests: !include jobs/run-backend-performance-tests.yaml
+run-ui-performance-tests: !include jobs/run-ui-performance-tests.yaml
+publish-artifacts: !include jobs/publish-artifacts.yaml
+
+# e2e
+run-e2e-group-1: !include jobs/e2e/run-e2e-group-1.yaml
+run-e2e-group-2: !include jobs/e2e/run-e2e-group-2.yaml
+run-e2e-group-3: !include jobs/e2e/run-e2e-group-3.yaml
+run-e2e-group-4: !include jobs/e2e/run-e2e-group-4.yaml
+
+triggers:
+  - remote:
+      ip: 0.0.0.0/0
+
+branches: !include branches/for-new-branch.yaml
+other:
+  concurrent-build-plugin: '1'

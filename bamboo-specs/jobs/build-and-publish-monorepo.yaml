@@ -1,0 +1,19 @@
+#other: !include runners/docker-large-dind-large.yaml
+tasks:
+  - script: |
+      #!/bin/bash
+      #source ${bamboo.scripts.path}/ci-init.sh
+
+      #set +e
+      #echo "Running typescript build and unit tests while building monorepo image..."
+      #USE_CACHE=1 ${bamboo.scripts.path}/ci-build.sh $MONOREPO_IMAGE_TAG ./Dockerfile
+      #set -e
+
+      #echo "Copying build and test results"
+      #docker create --name components-monorepo $MONOREPO_IMAGE_TAG
+      #docker cp components-monorepo:/home/node/.artifacts/monorepo/. .artifacts
+      #ls -altr .artifacts
+      #touch -m ./.artifacts/*
+      echo "build-and-publish-monorepo"
+final-tasks:
+  - !include final-tasks/parse-junit-reports.yaml

@@ -1,0 +1,6 @@
+#other: !include runners/docker-large-dind-large.yaml
+tasks:
+  - script: |
+      #!/bin/bash
+      #source ${bamboo.scripts.path}/ci-init.sh
+      echo "inside script"

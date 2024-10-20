@@ -1,0 +1,9 @@
+#other: !include runners/docker-large-dind-large.yaml
+tasks:
+  - script: |
+      #!/bin/bash
+      #source ${bamboo.scripts.path}/ci-init.sh
+      #source ${bamboo.scripts.path}/ci-docker-compose-run-tests.sh e2e
+      echo "inside script"
+final-tasks:
+  - !include final-tasks/parse-junit-reports.yaml

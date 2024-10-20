@@ -1,0 +1,8 @@
+#other: !include runners/simpleversion-xsmall.yaml
+tasks:
+  - script: |
+      calculate-version
+  - inject-variables:
+      file: version.txt
+      scope: RESULT
+      namespace: build
