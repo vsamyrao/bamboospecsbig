@@ -1,4 +1,153 @@
----
-!include 'acceptance-tests.yaml'
----
-!include 'build-publish-test.yaml'
+version: 2
+plan:
+  project-key: FEAAS
+  key: COMP
+  name: FEaaS components
+
+variables:
+  application.key: feaas
+  docker.namespace: dev/feaas/components
+  docker.registry: contenthub.azurecr.io
+  npm.secret.readwrite: BAMSCRT@0@0@7jll11WfvyRPtYPV7ooM9Sz4EzcwtI3LELeigvgUZF6SGt6qvkSVlWk9Db3PVE6T
+  azure.blob.storage.account.name: feaasstatic
+  azure.blob.storage.account.secret: BAMSCRT@0@0@hWECT67EoPnTEScAq5Tb2Q7xynNkM1xvnpM22MWSM5z2LLEI06M00jC+TkewvmKEVGJZA9LxTh6UxeenDsDzvv1ONpFbW+qH/oyXD77rtrv+xs5+tPsAXb3OaIAC1tGn
+  azure.blob.clientside.container: packages
+  azure.blob.assets.container: assets
+  azure.storage.table.name: backendperformanceresults
+  azure.storage.table.url: https://feaasstatic.table.core.windows.net/backendperformanceresults
+  scripts.path: bamboo-specs/scripts
+  xmcloud.staging.client.id: zXT4pFyUcb4GNCMzUw6rNOOIwFsegdZf
+  xmcloud.staging.client.secret: BAMSCRT@0@0@ZSFHTXUKCv2HhyYmQcLy5B2wp2nvFnQemTPil01JVIzxHGVqQG4DL2TPxFLYSihRVVtzx53RYieVFMcrjQhx7eyL7eHhsBAxQYyRni9frFE=
+  xmcloud.staging.audience: https://api-staging.sitecore-staging.cloud
+  xmcloud.staging.auth.endpoint: https://auth-staging-1.sitecore-staging.cloud
+  xmcloud.staging.deploy.endpoint: https://xmclouddeploy-api-staging.sitecore-staging.cloud
+
+stages:
+  - initialize:
+      - calculate-version
+  - prepare:
+      jobs:
+        - check-and-deploy-tenants
+        - build-and-publish-monorepo
+  - build:
+      jobs:
+        - build-and-publish-backend
+        - build-and-publish-k6
+        - build-and-publish-frontend
+        - build-and-publish-e2e
+        - build-helm-backend
+        - build-helm-frontend
+  - test:
+      jobs:
+        - run-backend-tests
+        - run-e2e-group-1
+        - run-e2e-group-2
+        - run-e2e-group-3
+        - run-e2e-group-4
+        - run-backend-performance-tests
+        - run-ui-performance-tests
+  - publish:
+      jobs:
+        - publish-artifacts
+
+calculate-version:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "calculate-version"
+
+check-and-deploy-tenants:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "check-and-deploy-tenants"
+
+build-and-publish-monorepo:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-and-publish-monorepo"
+
+build-and-publish-backend:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-and-publish-backend"
+
+build-and-publish-k6:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-and-publish-k6"
+
+build-and-publish-frontend:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-and-publish-frontend"
+
+build-and-publish-e2e:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-and-publish-e2e"
+
+build-helm-backend:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-helm-backend"
+
+build-helm-frontend:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "build-helm-frontend"
+
+run-backend-tests:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-backend-tests"
+
+run-e2e-group-1:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-e2e-group-1"
+
+run-e2e-group-2:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-e2e-group-2"
+
+run-e2e-group-3:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-e2e-group-3"
+
+run-e2e-group-4:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-e2e-group-4"
+
+run-backend-performance-tests:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-backend-performance-tests"
+
+run-ui-performance-tests:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "run-ui-performance-tests"
+
+publish-artifacts:
+  tasks:
+    - script: |
+        #!/bin/bash
+        echo "publish-artifacts"
