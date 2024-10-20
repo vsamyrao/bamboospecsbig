@@ -5,10 +5,11 @@ plan:
   key: COMP
   name: FEaaS components
 stages:
-  - Build hull:
-    - Build
+  - build:
+      jobs:
+        - perftest
 
-Build:
+perftest:
   tasks:
     - script:
       - echo 'Hello World!'
