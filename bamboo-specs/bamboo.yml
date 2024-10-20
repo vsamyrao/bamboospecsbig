@@ -5,6 +5,13 @@ plan:
   key: COMP
   name: FEaaS components
 stages:
+  - initialize:
+      jobs:
+        - calculate-version
+  - prepare:
+      jobs:
+        - check-and-deploy-tenants
+        - build-and-publish-monorepo
   - build:
       jobs:
         - build-and-publish-backend
@@ -22,7 +29,25 @@ stages:
         - run-e2e-group-4
         - run-backend-performance-tests
         - run-ui-performance-tests
+  - publish:
+      jobs:
+        - publish-artifacts
 
+calculate-version:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+check-and-deploy-tenants:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+build-and-publish-monorepo:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+      
 build-and-publish-backend:
   tasks:
     - script:
@@ -84,6 +109,11 @@ run-backend-performance-tests:
       - echo 'Hello World!'
 
 run-ui-performance-tests:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+publish-artifacts:
   tasks:
     - script:
       - echo 'Hello World!'
