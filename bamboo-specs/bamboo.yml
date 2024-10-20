@@ -4,3 +4,11 @@ plan:
   project-key: FEAAS
   key: COMP
   name: FEaaS components
+stages:
+  - Build hull:
+    - Build
+
+Build:
+  tasks:
+    - script:
+      - echo 'Hello World!'
