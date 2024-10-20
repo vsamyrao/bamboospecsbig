@@ -7,9 +7,39 @@ plan:
 stages:
   - build:
       jobs:
-        - perftest
+        - build-and-publish-backend
+        - build-and-publish-k6
+        - build-and-publish-frontend
+        - build-and-publish-e2e
+        - build-helm-backend
+        - build-helm-frontend
 
-perftest:
+build-and-publish-backend:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+build-and-publish-k6:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+build-and-publish-frontend:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+build-and-publish-e2e:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+build-helm-backend:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+build-helm-frontend:
   tasks:
     - script:
       - echo 'Hello World!'
