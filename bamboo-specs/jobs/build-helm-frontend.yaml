@@ -1,6 +1,0 @@
-#other: !include runners/helm-xsmall.yaml
-tasks:
-  - script: |
-      #!/bin/bash
-      # Setup variables and call helm chart publish task.
-      echo "inside script"

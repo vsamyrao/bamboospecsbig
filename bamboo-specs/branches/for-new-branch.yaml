@@ -1,5 +1,0 @@
-create: for-new-branch
-link-to-jira: true
-delete:
-  after-deleted-days: 1
-  after-inactive-days: never

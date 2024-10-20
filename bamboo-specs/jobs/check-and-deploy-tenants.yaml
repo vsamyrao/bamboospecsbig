@@ -1,6 +1,0 @@
-#other: !include runners/xm-cloud-deploy-xsmall.yaml
-
-tasks:
-  - script: |
-      #!/bin/bash
-      echo "inside script"

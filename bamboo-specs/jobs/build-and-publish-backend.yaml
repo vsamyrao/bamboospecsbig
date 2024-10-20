@@ -1,7 +1,0 @@
-#other: !include runners/docker-large-dind-large.yaml
-tasks:
-  - script: |
-      #!/bin/bash
-      #source ${bamboo.scripts.path}/ci-init.sh
-      #PUBLISH_IMAGE=1 ${bamboo.scripts.path}/ci-build.sh $BACKEND_IMAGE_TAG ./backend/Dockerfile
-      echo "inside build-and-publish-backend"

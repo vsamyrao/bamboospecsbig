@@ -1,7 +1,0 @@
-#other: !include runners/docker-large-dind-large.yaml
-tasks:
-  - script: |
-      #!/bin/bash
-      #source ${bamboo.scripts.path}/ci-init.sh
-      #USE_CACHE=1 ${bamboo.scripts.path}/ci-build.sh $K6_IMAGE_TAG ./backend-performance-test/Dockerfile
-      echo "build-and-publish-k6"

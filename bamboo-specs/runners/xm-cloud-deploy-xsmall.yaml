@@ -1,3 +1,0 @@
-pbc:
-  image: mregistry.azurecr.io/dev/xm-cloud-deploy/xm-cloud-deploy:0.1.43-sdk.6.0
-  size: XSMALL

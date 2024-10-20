@@ -1,7 +1,0 @@
-#other: !include runners/docker-large-dind-large.yaml
-tasks:
-  - script: |
-      #!/bin/bash
-      #source ${bamboo.scripts.path}/ci-init.sh
-      #USE_CACHE=1 ${bamboo.scripts.path}/ci-build.sh $E2E_IMAGE_TAG ./e2e/Dockerfile
-      echo "inside build-and-publish-e2e"
