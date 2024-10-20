@@ -13,6 +13,15 @@ stages:
         - build-and-publish-e2e
         - build-helm-backend
         - build-helm-frontend
+  - test:
+      jobs:
+        - run-backend-tests
+        - run-e2e-group-1
+        - run-e2e-group-2
+        - run-e2e-group-3
+        - run-e2e-group-4
+        - run-backend-performance-tests
+        - run-ui-performance-tests
 
 build-and-publish-backend:
   tasks:
@@ -40,6 +49,41 @@ build-helm-backend:
       - echo 'Hello World!'
 
 build-helm-frontend:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-backend-tests:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-e2e-group-1:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-e2e-group-2:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-e2e-group-3:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-e2e-group-4:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-backend-performance-tests:
+  tasks:
+    - script:
+      - echo 'Hello World!'
+
+run-ui-performance-tests:
   tasks:
     - script:
       - echo 'Hello World!'
